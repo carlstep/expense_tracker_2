@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:expense_tracker_2/models/expense.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ExpenseItem extends StatelessWidget {
   const ExpenseItem({
@@ -14,9 +15,9 @@ class ExpenseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ExpansionTile(
-        childrenPadding: const EdgeInsets.all(12),
+        childrenPadding: const EdgeInsets.all(20),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(10),
@@ -31,77 +32,90 @@ class ExpenseItem extends StatelessWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(expense.title),
+            Row(
+              children: [
+                Text(
+                  expense.title,
+                  style: GoogleFonts.poppins(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(
               height: 8,
             ),
             Row(
               children: [
-                Text(expense.transactionCountry),
+                Text(
+                  expense.transactionCurrency,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(expense.transactionCurrencyAmount.toStringAsFixed(2)),
+                const Spacer(),
+                Text(
+                  expense.formattedDate,
+                  style: TextStyle(fontSize: 14),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Icon(categoryItems[expense.category]),
+                Spacer(),
+                Text(
+                  expense.transactionCountry,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                  ),
+                ),
                 const SizedBox(
                   width: 20,
                 ),
-                Text(expense.transactionLocation),
+                Text(
+                  expense.transactionLocation,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                  ),
+                ),
               ],
             ),
           ],
         ),
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+          const Divider(),
+          Row(
             children: [
-              Row(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(expense.transactionCurrency),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                          expense.transactionCurrencyAmount.toStringAsFixed(2)),
-                    ],
-                  ),
-                  const Spacer(),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Icon(categoryItems[expense.category]),
-                      Text(
-                        expense.formattedDate,
-                      ),
-                    ],
-                  ),
+                  Text(expense.altOneCurrency),
+                  Text(expense.altOneCurrencyAmount.toStringAsFixed(2)),
                 ],
               ),
               const SizedBox(
-                height: 12,
+                width: 40,
               ),
-              const Divider(),
-              Row(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(expense.altOneCurrency),
-                      Text(expense.altOneCurrencyAmount.toStringAsFixed(2)),
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 40,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(expense.altTwoCurrency),
-                      Text(expense.altTwoCurrencyAmount.toStringAsFixed(2)),
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 40,
-                  ),
+                  Text(expense.altTwoCurrency),
+                  Text(expense.altTwoCurrencyAmount.toStringAsFixed(2)),
                 ],
+              ),
+              const SizedBox(
+                width: 40,
               ),
             ],
           ),

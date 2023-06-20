@@ -64,6 +64,19 @@ class _ExpensesState extends State<Expenses> {
       altTwoCurrency: 'EUR',
       altTwoCurrencyAmount: 00.1,
     ),
+    Expense(
+      title: 'cambodia - annual work permit',
+      date: DateTime.now(),
+      category: Category.work,
+      transactionCurrencyAmount: 155.00,
+      transactionCurrency: 'USD',
+      altOneCurrencyAmount: 620000,
+      altOneCurrency: 'KHR',
+      transactionCountry: 'Cambodia',
+      transactionLocation: 'Siem Reap',
+      altTwoCurrency: 'EUR',
+      altTwoCurrencyAmount: 00.1,
+    ),
   ];
 
   void _openAddExpenseOverlay() {
