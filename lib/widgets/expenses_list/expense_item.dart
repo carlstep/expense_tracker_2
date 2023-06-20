@@ -14,64 +14,98 @@ class ExpenseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(20),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+      margin: const EdgeInsets.all(10),
+      child: ExpansionTile(
+        childrenPadding: const EdgeInsets.all(12),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+        collapsedShape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(96, 169, 195, 139),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(expense.title),
             const SizedBox(
-              height: 4,
+              height: 8,
             ),
             Row(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(expense.spendCurrency),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(expense.spendCurrencyAmount.toStringAsFixed(2)),
-                  ],
-                ),
-                const Spacer(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(expense.homeCurrency),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(expense.homeCurrencyAmount.toStringAsFixed(2)),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            Row(
-              children: [
-                Text(expense.spendCountry),
-                const Spacer(),
-                Icon(categoryItems[expense.category]),
+                Text(expense.transactionCountry),
                 const SizedBox(
-                  width: 8,
+                  width: 20,
                 ),
-                Text(
-                  expense.formattedDate,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Text(expense.spendLocation),
+                Text(expense.transactionLocation),
               ],
             ),
           ],
         ),
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(expense.transactionCurrency),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                          expense.transactionCurrencyAmount.toStringAsFixed(2)),
+                    ],
+                  ),
+                  const Spacer(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Icon(categoryItems[expense.category]),
+                      Text(
+                        expense.formattedDate,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              const Divider(),
+              Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(expense.altOneCurrency),
+                      Text(expense.altOneCurrencyAmount.toStringAsFixed(2)),
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 40,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(expense.altTwoCurrency),
+                      Text(expense.altTwoCurrencyAmount.toStringAsFixed(2)),
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 40,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

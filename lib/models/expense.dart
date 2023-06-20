@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // data structure of an expence item
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
 import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
 
 final formatter = DateFormat.yMMMd();
 
@@ -42,24 +42,29 @@ class Expense {
     required this.title,
     required this.date,
     required this.category,
-    required this.spendCurrencyAmount,
-    required this.spendCurrency,
-    required this.homeCurrencyAmount,
-    required this.homeCurrency,
-    required this.spendCountry,
-    required this.spendLocation,
+    required this.transactionCurrencyAmount,
+    required this.transactionCurrency,
+    required this.altOneCurrencyAmount,
+    required this.altOneCurrency,
+    required this.transactionCountry,
+    required this.transactionLocation,
+    required this.altTwoCurrencyAmount,
+    required this.altTwoCurrency,
   }) : id = uuid.v4();
 
   final String id;
   final String title;
   final DateTime date;
   final Category category;
-  final double spendCurrencyAmount; // value before converting to home currency
-  final String spendCurrency; // local or spend currency
-  final double homeCurrencyAmount; // value after converting
-  final String homeCurrency; // home currency
-  final String spendCountry; // country of the spend
-  final String spendLocation; // location of the spend
+  final double
+      transactionCurrencyAmount; // value before converting to home currency
+  final String transactionCurrency; // local or spend currency
+  final double altOneCurrencyAmount; // value after converting
+  final String altOneCurrency; // home currency
+  final String transactionCountry; // country of the spend
+  final String transactionLocation; // location of the spend
+  final double altTwoCurrencyAmount; // value after converting
+  final String altTwoCurrency;
 
   String get formattedDate {
     return formatter.format(date);
