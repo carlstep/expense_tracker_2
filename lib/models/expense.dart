@@ -31,10 +31,10 @@ enum Country {
 }
 
 // TODO - use a flag icon with the country name
-const countryFlags = {
-  Country.cambodia: '🇰🇭',
-  Country.usa: '🇺🇸',
-  Country.uk: '🇬🇧',
+const currencyCode = {
+  Country.cambodia: 'KHR',
+  Country.usa: 'USD',
+  Country.uk: 'GBP',
 };
 
 class Expense {
