@@ -81,27 +81,6 @@ class _NewExpenseState extends State<NewExpense> {
           ),
           Row(
             children: [
-              DropdownButton(
-                value: _selectedSpendCountry,
-                items: Country.values
-                    .map(
-                      (country) => DropdownMenuItem(
-                        value: country,
-                        child: Text(
-                          country.name.toUpperCase(),
-                        ),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (value) {
-                  if (value == null) {
-                    return;
-                  }
-                  setState(() {
-                    _selectedSpendCountry = value;
-                  });
-                },
-              ),
               Expanded(
                 child: TextField(
                   controller: _spendAmountController,

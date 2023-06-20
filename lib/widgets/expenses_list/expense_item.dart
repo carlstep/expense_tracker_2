@@ -62,18 +62,18 @@ class ExpenseItem extends StatelessWidget {
                 const Spacer(),
                 Text(
                   expense.formattedDate,
-                  style: TextStyle(fontSize: 14),
+                  style: const TextStyle(fontSize: 14),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Icon(categoryItems[expense.category]),
-                Spacer(),
+                const Spacer(),
                 Text(
                   expense.transactionCountry,
                   style: GoogleFonts.poppins(
@@ -114,8 +114,10 @@ class ExpenseItem extends StatelessWidget {
                   Text(expense.altTwoCurrencyAmount.toStringAsFixed(2)),
                 ],
               ),
-              const SizedBox(
-                width: 40,
+              const Spacer(),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.info_outline_rounded),
               ),
             ],
           ),
