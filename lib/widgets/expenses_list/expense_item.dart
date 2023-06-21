@@ -116,6 +116,7 @@ class ExpenseItem extends StatelessWidget {
               ),
               const Spacer(),
               IconButton(
+                // TODO - show popup dialog to display expense data, with option to share
                 onPressed: () {},
                 icon: const Icon(Icons.info_outline_rounded),
               ),
