@@ -63,18 +63,20 @@ class _NewExpenseState extends State<NewExpense> {
     }
     widget.onAddExpense(
       Expense(
-          title: _titleController.text,
-          date: _selectedDate!,
-          category: _selectedCategory,
-          transactionCurrencyAmount: enteredSpendAmount,
-          transactionCurrency: 'ISO',
-          altOneCurrencyAmount: 00.1,
-          altOneCurrency: 'ISO',
-          transactionCountry: _selectedSpendCountry.name,
-          transactionLocation: 'transactionLocation',
-          altTwoCurrencyAmount: 00.2,
-          altTwoCurrency: 'ISO'),
+        title: _titleController.text,
+        date: _selectedDate!,
+        category: _selectedCategory,
+        transactionCurrencyAmount: enteredSpendAmount,
+        transactionCurrency: 'ISO',
+        altOneCurrencyAmount: 00.1,
+        altOneCurrency: 'ISO',
+        transactionCountry: _selectedSpendCountry.name,
+        transactionLocation: 'transactionLocation',
+        altTwoCurrencyAmount: 00.2,
+        altTwoCurrency: 'ISO',
+      ),
     );
+    Navigator.pop(context);
   }
 
   @override
@@ -87,7 +89,7 @@ class _NewExpenseState extends State<NewExpense> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
       child: Column(
         children: [
           TextField(
