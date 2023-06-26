@@ -42,13 +42,13 @@ class Expense {
     required this.title,
     required this.date,
     required this.category,
-    required this.transactionCurrencyAmount,
+    required this.transactionAmount,
     required this.transactionCurrency,
-    required this.altOneCurrencyAmount,
+    required this.altOneAmount,
     required this.altOneCurrency,
     required this.transactionCountry,
     required this.transactionLocation,
-    required this.altTwoCurrencyAmount,
+    required this.altTwoAmount,
     required this.altTwoCurrency,
   }) : id = uuid.v4();
 
@@ -56,18 +56,42 @@ class Expense {
   final String title;
   final DateTime date;
   final Category category;
-  final double
-      transactionCurrencyAmount; // value before converting to home currency
+  final double transactionAmount; // value before converting to home currency
   final String transactionCurrency; // local or spend currency
-  final double altOneCurrencyAmount; // value after converting
+  final double altOneAmount; // value after converting
   final String altOneCurrency; // home currency
   final String transactionCountry; // country of the spend
   final String transactionLocation; // location of the spend
-  final double altTwoCurrencyAmount; // value after converting
+  final double altTwoAmount; // value after converting
   final String altTwoCurrency;
 
   String get formattedDate {
     return formatter.format(date);
+  }
+}
+
+class ExpenseBucket {
+  const ExpenseBucket({
+    required this.category,
+    required this.expenses,
+  });
+
+  ExpenseBucket.forCategory(List<Expense> allExpenses, this.category)
+      : expenses = allExpenses
+            .where((expense) => expense.category == category)
+            .toList();
+
+  final Category category;
+  final List<Expense> expenses;
+
+  double get totalExpenses {
+    double sum = 0;
+
+    for (final expense in expenses) {
+      sum += expense.transactionAmount;
+    }
+
+    return sum;
   }
 }
 

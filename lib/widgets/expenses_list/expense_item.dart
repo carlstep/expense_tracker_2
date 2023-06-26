@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:expense_tracker_2/main.dart';
 import 'package:flutter/material.dart';
 
 import 'package:expense_tracker_2/models/expense.dart';
@@ -17,7 +18,7 @@ class ExpenseItem extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ExpansionTile(
-        childrenPadding: const EdgeInsets.all(20),
+        childrenPadding: const EdgeInsets.all(25),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(10),
@@ -25,10 +26,10 @@ class ExpenseItem extends StatelessWidget {
         ),
         collapsedShape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(20),
+            Radius.circular(10),
           ),
         ),
-        backgroundColor: const Color.fromARGB(96, 169, 195, 139),
+        // backgroundColor: kColorScheme.primaryContainer,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -36,10 +37,7 @@ class ExpenseItem extends StatelessWidget {
               children: [
                 Text(
                   expense.title,
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
             ),
@@ -58,7 +56,7 @@ class ExpenseItem extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                Text(expense.transactionCurrencyAmount.toStringAsFixed(2)),
+                Text(expense.transactionAmount.toStringAsFixed(2)),
                 const Spacer(),
                 Text(
                   expense.formattedDate,
@@ -101,7 +99,7 @@ class ExpenseItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(expense.altOneCurrency),
-                  Text(expense.altOneCurrencyAmount.toStringAsFixed(2)),
+                  Text(expense.altOneAmount.toStringAsFixed(2)),
                 ],
               ),
               const SizedBox(
@@ -111,7 +109,7 @@ class ExpenseItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(expense.altTwoCurrency),
-                  Text(expense.altTwoCurrencyAmount.toStringAsFixed(2)),
+                  Text(expense.altTwoAmount.toStringAsFixed(2)),
                 ],
               ),
               const Spacer(),

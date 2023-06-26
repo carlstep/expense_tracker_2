@@ -1,3 +1,4 @@
+import 'package:expense_tracker_2/widgets/chart/chart.dart';
 import 'package:expense_tracker_2/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker_2/models/expense.dart';
 import 'package:expense_tracker_2/widgets/new_expense.dart';
@@ -16,66 +17,66 @@ class _ExpensesState extends State<Expenses> {
       title: 'visa application',
       date: DateTime.now(),
       category: Category.travel,
-      transactionCurrencyAmount: 225.00,
+      transactionAmount: 225.00,
       transactionCurrency: 'USD',
-      altOneCurrencyAmount: 180.40,
+      altOneAmount: 180.40,
       altOneCurrency: 'GBP',
       transactionCountry: 'United Kingdom',
       transactionLocation: 'London',
       altTwoCurrency: 'EUR',
-      altTwoCurrencyAmount: 00.1,
+      altTwoAmount: 00.1,
     ),
     Expense(
       title: 'mobile wifi',
       date: DateTime.now(),
       category: Category.work,
-      transactionCurrencyAmount: 8.00,
+      transactionAmount: 8.00,
       transactionCurrency: 'USD',
-      altOneCurrencyAmount: 6.41,
+      altOneAmount: 6.41,
       altOneCurrency: 'GBP',
       transactionCountry: 'Cambodia',
       transactionLocation: 'Siem Reap',
       altTwoCurrency: 'EUR',
-      altTwoCurrencyAmount: 00.1,
+      altTwoAmount: 00.1,
     ),
     Expense(
       title: 'breakfast',
       date: DateTime.now(),
       category: Category.food,
-      transactionCurrencyAmount: 24000,
+      transactionAmount: 24000,
       transactionCurrency: 'KHR',
-      altOneCurrencyAmount: 4.68,
+      altOneAmount: 4.68,
       altOneCurrency: 'GBP',
       transactionCountry: 'Cambodia',
       transactionLocation: 'Siem Reap',
       altTwoCurrency: 'EUR',
-      altTwoCurrencyAmount: 00.1,
+      altTwoAmount: 00.1,
     ),
     Expense(
       title: 'hotel 2 nights',
       date: DateTime.now(),
       category: Category.accommodation,
-      transactionCurrencyAmount: 2585.00,
+      transactionAmount: 2585.00,
       transactionCurrency: 'THB',
-      altOneCurrencyAmount: 76,
+      altOneAmount: 76,
       altOneCurrency: 'USD',
       transactionCountry: 'Thailand',
       transactionLocation: 'Bangkok',
       altTwoCurrency: 'EUR',
-      altTwoCurrencyAmount: 00.1,
+      altTwoAmount: 00.1,
     ),
     Expense(
       title: 'cambodia - annual work permit',
       date: DateTime.now(),
       category: Category.work,
-      transactionCurrencyAmount: 155.00,
+      transactionAmount: 155.00,
       transactionCurrency: 'USD',
-      altOneCurrencyAmount: 620000,
+      altOneAmount: 620000,
       altOneCurrency: 'KHR',
       transactionCountry: 'Cambodia',
       transactionLocation: 'Siem Reap',
       altTwoCurrency: 'EUR',
-      altTwoCurrencyAmount: 00.1,
+      altTwoAmount: 00.1,
     ),
   ];
 
@@ -117,8 +118,10 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
-    Widget mainContent = const Center(
-      child: Text('No expenses found. Start adding some!'),
+    Widget mainContent = const SingleChildScrollView(
+      child: Center(
+        child: Text('No expenses found. Start adding some!'),
+      ),
     );
 
     if (_registeredExpenses.isNotEmpty) {
@@ -144,7 +147,7 @@ class _ExpensesState extends State<Expenses> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('The chart...'),
+          Chart(expenses: _registeredExpenses),
           Expanded(
             child: mainContent,
           ),
