@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker_2/widgets/expenses.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
@@ -63,6 +64,7 @@ class MainApp extends StatelessWidget {
               ),
             ),
       ),
+      debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       home: const Expenses(),
     );
